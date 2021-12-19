@@ -15,7 +15,7 @@
     <p>{description}</p>
   </div>
   <footer>
-    <a href="mailto:{contactEmail}">{contactEmail}</a>
+    <a href="mailto:{contactEmail}">Contact</a>
     <button>Show Details</button>
     <button>Favorite</button>
   </footer>
