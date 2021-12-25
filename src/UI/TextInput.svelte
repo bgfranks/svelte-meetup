@@ -1,4 +1,5 @@
 <script>
+  // props
   export let controlType = null;
   export let id;
   export let label;
