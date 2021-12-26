@@ -25,6 +25,7 @@
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
     cursor: pointer;
     text-decoration: none;
+    font-family: 'Lato', sans-serif;
   }
 
   button:focus {
@@ -88,5 +89,10 @@
   .outline.success:hover,
   .outline.success:active {
     background: #c2ffd1;
+  }
+
+  .circle {
+    border-radius: 50%;
+    padding: 0.8rem 1.3rem;
   }
 </style>
