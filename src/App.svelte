@@ -68,6 +68,11 @@
     editMode = false;
   }
 
+  // cancel the meetup edit
+  function cancelEdit() {
+    editMode = false;
+  }
+
   // toggle favorite
   function toggleFavorite(e) {
     // finds the meetup based on ID and t oggles isFavorite
@@ -93,7 +98,7 @@
     />
   </div>
   {#if editMode}
-    <EditMeetup on:save={addMeetup} />
+    <EditMeetup on:save={addMeetup} on:cancel={cancelEdit} />
   {/if}
   <MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
