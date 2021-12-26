@@ -49,18 +49,23 @@
   let editMode = false;
 
   // adds a new meetup
-  function addMeetup() {
+  function addMeetup(e) {
+    // extracts the data from the event and adds to a new meetup object
+    const meetup = e.detail;
+
     const newMeetup = {
       id: Math.random().toString(),
-      title: title,
-      subtitle: subtitle,
-      description: description,
-      imgUrl: imgUrl,
-      location: location,
-      contactEmail: contactEmail,
+      title: meetup.title,
+      subtitle: meetup.subtitle,
+      description: meetup.description,
+      imgUrl: meetup.imgUrl,
+      location: meetup.location,
+      contactEmail: meetup.contactEmail,
     };
 
+    // adds the new meet up to the spread meetup array and sets edit to false
     meetups = [newMeetup, ...meetups];
+    editMode = false;
   }
 
   // toggle favorite
@@ -80,12 +85,15 @@
 
 <Header />
 <main>
-  <Button
-    caption={editMode ? 'Cancel' : 'Add Meetup'}
-    on:click={() => (editMode = !editMode)}
-  />
+  <div class="meetup-controls edit">
+    <Button
+      caption={editMode ? 'x' : '+'}
+      mode="circle"
+      on:click={() => (editMode = !editMode)}
+    />
+  </div>
   {#if editMode}
-    <EditMeetup />
+    <EditMeetup on:save={addMeetup} />
   {/if}
   <MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
@@ -93,5 +101,14 @@
 <style>
   main {
     margin-top: 5rem;
+  }
+
+  .meetup-controls {
+    margin: 1rem;
+  }
+
+  .edit {
+    font-size: 1.1rem;
+    font-weight: bold;
   }
 </style>
