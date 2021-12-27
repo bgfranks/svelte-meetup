@@ -97,10 +97,6 @@
     margin: 0;
   }
 
-  div {
-    text-align: right;
-  }
-
   .content {
     height: 4rem;
   }
