@@ -11,32 +11,12 @@
 
   // adds a new meetup
   function addMeetup(e) {
-    // extracts the data from the event and adds to a new meetup object
-    const meetup = e.detail;
-
-    const newMeetup = {
-      title: meetup.title,
-      subtitle: meetup.subtitle,
-      description: meetup.description,
-      imgUrl: meetup.imgUrl,
-      location: meetup.location,
-      contactEmail: meetup.contactEmail,
-    };
-
-    // adds the new meet up to the meetup store and sets edit to false
-    meetupsStore.addMeetup(newMeetup);
     editMode = false;
   }
 
   // cancel the meetup edit
   function cancelEdit() {
     editMode = false;
-  }
-
-  // toggle favorite
-  function toggleFavorite(e) {
-    const id = e.detail;
-    meetupsStore.toggleFavorite(id);
   }
 </script>
 
@@ -52,7 +32,7 @@
   {#if editMode}
     <EditMeetup on:save={addMeetup} on:cancel={cancelEdit} />
   {/if}
-  <MeetupGrid meetups={$meetupsStore} on:toggleFavorite={toggleFavorite} />
+  <MeetupGrid meetups={$meetupsStore} />
 </main>
 
 <style>

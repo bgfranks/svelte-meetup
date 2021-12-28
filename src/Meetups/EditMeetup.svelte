@@ -1,5 +1,6 @@
 <script>
   // imports
+  import meetupsStore from './meetups-store';
   import { createEventDispatcher } from 'svelte';
   import TextInput from '../UI/TextInput.svelte';
   import Button from '../UI/Button.svelte';
@@ -34,14 +35,18 @@
 
   // function to save the data from the form to the save dispatch event
   function submitForm() {
-    dispatch('save', {
-      title,
-      subtitle,
-      location,
-      contactEmail,
-      description,
-      imgUrl,
-    });
+    const newMeetup = {
+      title: title,
+      subtitle: subtitle,
+      description: description,
+      imgUrl: imgUrl,
+      location: location,
+      contactEmail: contactEmail,
+    };
+
+    // adds the new meet up to the meetup store and sets edit to false
+    meetupsStore.addMeetup(newMeetup);
+    dispatch('save');
   }
 
   // dispatches cancel
