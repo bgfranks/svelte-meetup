@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
 
 const meetupsStore = writable([
   {
@@ -47,14 +47,14 @@ const customMeetupStore = {
       id: Math.random().toString(),
       isFavorite: false,
     };
-    meetupsStore.update(items => {
-      return [newMeetup, ...items]
+    meetupsStore.update((items) => {
+      return [newMeetup, ...items];
     });
   },
   toggleFavorite: (id) => {
-    meetupsStore.update(items => {
+    meetupsStore.update((items) => {
       // finds the meetup by id
-      const updatedMeetup = { ...items.find((m) => m.id === id)};
+      const updatedMeetup = { ...items.find((m) => m.id === id) };
       updatedMeetup.isFavorite = !updatedMeetup.isFavorite;
 
       // finds the meetup index and replaces with the updated meetup
@@ -64,6 +64,6 @@ const customMeetupStore = {
       return updatedMeetups;
     });
   },
-}
+};
 
 export default customMeetupStore;

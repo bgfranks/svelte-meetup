@@ -1,6 +1,6 @@
 <script>
   // imports
-  import { createEventDispatcher } from 'svelte';
+  import meetupsStore from './meetups-store';
   import Button from '../UI/Button.svelte';
   import Badge from '../UI/Badge.svelte';
 
@@ -14,8 +14,9 @@
     contactEmail,
     isFavorite;
 
-  // created event dispatcher
-  const dispatch = createEventDispatcher();
+  function toggleFavorite() {
+    meetupsStore.toggleFavorite(id);
+  }
 </script>
 
 <article>
@@ -43,7 +44,7 @@
       caption={isFavorite ? 'Unfavorite' : 'Favorite'}
       mode="outline"
       color={isFavorite ? 'success' : null}
-      on:click={() => dispatch('toggleFavorite', id)}
+      on:click={toggleFavorite}
     />
   </footer>
 </article>
